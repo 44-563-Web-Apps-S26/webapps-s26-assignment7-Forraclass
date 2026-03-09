@@ -35,6 +35,8 @@
 		</p>
 		<input id="text" type="text">
 		<button onclick="makeNewDiv()">Add end</button>
+		<button onclick="addFront()">Add front</button>
+		<button onclick="removeDiv()">Remove</button>
 	
 	
 </body>
@@ -50,6 +52,27 @@
 		let container = document.getElementById('target');
 		container.appendChild(element);
 		
+	}
+
+	function removeDiv(){
+		let divListItems = document.getElementsByClassName("divlist");
+		let length = divListItems.length;
+		if(length > 1){
+			divListItems[1].remove();
+		}
+		else{
+			divListItems[0].remove();
+		}
+	}
+
+	function addFront(){
+		let element = document.createElement("div");
+		element.innerHTML = document.getElementById("text").value;
+		element.className = "divlist";
+		element.style.color = "orange";
+
+		let container = document.getElementById("target")
+		container.insertBefore(element, container.firstChild)
 	}
 </script>
 </html>	

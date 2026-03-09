@@ -29,6 +29,7 @@
   }
   
   function beginTime(){
+    haltTime = undefined;
     for(let i = 0; i<6; i++){
       setTimeout(function() {
         document.getElementById("counter").innerHTML = i
@@ -38,6 +39,7 @@
     setTimeout(function(){
       if (haltTime == undefined){
         document.getElementById("target").innerHTML = "Not soon enough"
+        return;
       }
       let targetTime = Date.now()
       document.getElementById("target").innerHTML = "Time was " + (targetTime - haltTime)
