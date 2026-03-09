@@ -14,17 +14,11 @@
   </head>
 <body>
   <h1>Tristen Thompson: reflexes</h1>
-  <h2>Timeout - Red in 3 seconds</h2>
 
   <div id="target">Your time</div>
   <div id="counter">Count</div>
-  <button>Go</button>
+  <button onclick="beginTime()">Go</button>
   <button onclick="recordTime()">Halt</button>
-
-  <button type="button"
-  class="btn btn-primary"
-  onclick="buttonPress2()">
-  Click me change the color.</button>
   
 
   <script> 
@@ -33,16 +27,20 @@
     haltTime = Date.now();
     console.log(haltTime);
   }
-  function buttonPress1() {
-    setTimeout(function(){
-      document.getElementById('target').style.color = "red"
-    }, 3000)
-  }
+  function beginTime(){
+    for(let i = 0; i<6; i++){
+      setTimeout(function() {
+        document.getElementById("counter").innerHTML = i
+      },(5-i)*1000)
+    }
 
-  function buttonPress2() {
-    setTimeout(()=>{
-      document.getElementById('target').style.color = "red"
-    }, 3000)
+    setTimeout(function(){
+      if (haltTime == undefined){
+        document.getElementById("target").innerHTML = "Not soon enough"
+      }
+      let targetTime = Date.now()
+      document.getElementById("target").innerHTML = "Time was " + (targetTime - haltTime)
+    }, 5000)
   }
   </script>
 </body>
